@@ -33,10 +33,13 @@ public class Calculator {
      * @returns the result of this operation.
      **/
     public Integer sum(Integer a, Integer b) {
+        ++numberOfOperations;
+        
+        if (b==null)
+            b = 0;
         if (a == null)
             return b;
 
-        ++numberOfOperations;
         return a + b;
     }
 
@@ -51,7 +54,13 @@ public class Calculator {
      * @throws IllegalArgumentException if b is 0.
       **/
     public Integer divide(Integer a, Integer b) {
+        if (b == null || b == 0) throw new IllegalArgumentException("division by zero");
+
         ++numberOfOperations;
+
+        if (a == null)
+            return 0;
+            
         return a / b;
     }
 
